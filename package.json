@@ -1,0 +1,31 @@
+{
+  "name": "OpinioMobileApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "debug:ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "debug:android": "adb reverse tcp:8081 tcp:8081 && node node_modules/react-native/local-cli/cli.js run-android",
+    "lint": "eslint --config=.eslintrc src/**"
+  },
+  "dependencies": {
+    "react": "^15.1.0",
+    "react-native": "^0.27.2",
+    "react-native-progress": "^3.0.0",
+    "react-native-scrollable-tab-view": "^0.4.4",
+    "react-native-shimmer": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-transform-strict-mode": "^6.8.0",
+    "babel-preset-react-native": "^1.8.0",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
+    "eslint-plugin-react-native": "^1.1.0-beta"
+  }
+}
