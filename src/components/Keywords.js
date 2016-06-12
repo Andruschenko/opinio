@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 
 import Header from './Header';
@@ -15,17 +16,21 @@ export default class Keywords extends Component {
   _renderKeywords = chars => (
       <View style={styles.container}>
         {chars && chars.map(function(char, idx) {
-          return (<View key={idx} style={styles.row}>
-            <Text style={{fontSize: 20}}>{char['1'] + ', ' + char['2'] + ', ' + char['3']}</Text>
-            </View>);
+          return (
+            <TouchableOpacity key={idx} style={styles.row}>
+              <View>
+                <Text style={{fontSize: 20, alignSelf: 'center', color: '#3974b5'}}>{char['1'] + ', ' + char['2'] + ', ' + char['3']}</Text>
+              </View>
+            </TouchableOpacity>
+          );
         })}
       </View>
-    )
+  )
 
   render() {
     return (
       <View>
-        <Header text="Please choose a set" />
+        <Header text="Opinio" />
           {this._renderKeywords(keywords)}
       </View>
     );
@@ -38,7 +43,7 @@ const GREY = '#3D3934';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   headerText: {
@@ -47,10 +52,15 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   row: {
+    flex: 1,
+    flexDirection: 'row',
     paddingHorizontal: 20,
-    paddingVertical: 30,
-    borderWidth: 1,
-    borderRadius: 10,
-    marginVertical: 15,
+    paddingVertical: 50,
+    backgroundColor: '#b8d7f4',
+    justifyContent: 'center',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    borderTopColor: 'white',
+    borderTopWidth: 2,
   },
 });

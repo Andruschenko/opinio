@@ -10,7 +10,7 @@ export default class Header extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.props.text}</Text>
+        <Text style={{fontSize: 20}}>{this.props.text}</Text>
         <Image
           style={styles.icon}
           source={require('./../../data/opinio-button.png')}
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: '#F7F4C0',
     height: 80,
   },
   headerText: {

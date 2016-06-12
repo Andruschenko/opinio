@@ -8,7 +8,7 @@ import {
 
 import FeedItem from './FeedItem';
 
-import news from './../../data/news';
+import articles from './../../data/articles';
 
 import ProgressBar from 'react-native-progress/Bar';
 
@@ -29,6 +29,21 @@ export default class App extends Component {
     this.fetchData();
   }
 
+  _renderArticles = chars => (
+    <View style={styles.container}>
+      {chars && chars.map(function(char, idx) {
+        return (
+          <TouchableOpacity key={idx} style={styles.row}>
+            <View>
+              <Text style={styles.title}>{char.title}</Text>
+              <Text style={styles.subtext}>{char.subtext}</Text>
+            </View>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
+  )
+
   fetchData() {
     fetch(`${url}/articles`)
       .then((response) => {
@@ -37,7 +52,7 @@ export default class App extends Component {
       })
       .then((responseData) => {
         this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData.titles),
+          dataSource: this.state.dataSource.cloneWithRows([responseData]),
           loaded: true,
         });
         console.log('responseData', responseData);
@@ -48,16 +63,16 @@ export default class App extends Component {
         // insert mock data
         setTimeout(() => {
           this.setState({
-            dataSource: this.state.dataSource.cloneWithRows(news),
+            dataSource: this.state.dataSource.cloneWithRows(articles),
             loaded: true,
           });
-        }, 3000);
+        }, 1000);
       });
   }
 
 
-  _renderRow = (headline) => (
-    <FeedItem headline={headline.title} />
+  _renderRow = (article) => (
+    <FeedItem article={article}/>
   )
 
   _renderSeparator = (sectionID, rowID) => (
@@ -96,10 +111,27 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   listView: {
-    backgroundColor: '#F5FCFF',
   },
   separator: {
     borderColor: 'black',
     borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  title: {
+    fontSize: 20, alignSelf: 'center', color: '#3974b5',
+  },
+  subtext: {
+    fontSize: 14,
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingHorizontal: 20,
+    paddingVertical: 50,
+    backgroundColor: '#b8d7f4',
+    justifyContent: 'center',
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    borderTopColor: 'white',
+    borderTopWidth: 2,
   },
 });

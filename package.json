@@ -13,6 +13,7 @@
     "react-native": "^0.27.2",
     "react-native-progress": "^3.0.0",
     "react-native-scrollable-tab-view": "^0.4.4",
+    "react-native-search-bar": "^2.11.0",
     "react-native-shimmer": "^0.1.0"
   },
   "devDependencies": {
