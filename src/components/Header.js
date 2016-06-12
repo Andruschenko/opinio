@@ -3,13 +3,18 @@ import {
   View,
   Text,
   StyleSheet,
+  Image,
 } from 'react-native';
 
 export default class Header extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.headerText}>opinio</Text>
+        <Text>{this.props.text}</Text>
+        <Image
+          style={styles.icon}
+          source={require('./../../data/opinio-button.png')}
+        />
       </View>
     );
   }
@@ -20,14 +25,19 @@ const GREY = '#3D3934';
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    backgroundColor: GREY,
+    backgroundColor: '#F7F4C0',
     height: 80,
   },
   headerText: {
     fontSize: 28,
     fontWeight: 'bold',
     color: 'white',
-  }
+  },
+  icon: {
+    width: 50,
+    height: 50,
+  },
 });

@@ -14,11 +14,13 @@ import Keywords from './components/Keywords';
 export default class App extends Component {
   render() {
     return (
-      <ScrollableTabView>
+      <ScrollableTabView 
+        style={{marginTop: 20}}
+        tabBarPosition="bottom"
+      >
         <Launch tabLabel="Launch" />
         <Keywords tabLabel="Keywords" />
         <View style={{flex: 1}} tabLabel="Feed">
-          <Header />
           <Feed />
         </View>
       </ScrollableTabView>
